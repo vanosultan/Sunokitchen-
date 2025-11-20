@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oleh-Oleh Khas Kota Kediri - Toko Online</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #3d2817;
+            line-height: 1.6;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 800;
+            color: #8b2f2f;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5d4037;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #8b2f2f;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b2f2f;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(245, 230, 211, 0.95) 0%, rgba(232, 213, 196, 0.95) 100%),
+                        url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><pattern id="batik" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="2" fill="%238b2f2f" opacity="0.08"/><circle cx="75" cy="75" r="2" fill="%238b2f2f" opacity="0.08"/><path d="M 50 25 Q 60 35 50 45 Q 40 35 50 25" fill="none" stroke="%238b2f2f" opacity="0.06" stroke-width="1"/><path d="M 25 50 Q 35 60 25 70 Q 15 60 25 50" fill="none" stroke="%235d4037" opacity="0.06" stroke-width="1"/></pattern><rect width="100" height="100" fill="url(%23batik)"/></svg>');
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 47, 47, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(93, 64, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #8b2f2f;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hero-text p {
+            font-size: 1.3em;
+            color: #5d4037;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b2f2f 0%, #a13d3d 100%);
+            color: #fff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(139, 47, 47, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(139, 47, 47, 0.4);
+            background: linear-gradient(135deg, #a13d3d 0%, #8b2f2f 100%);
+        }
+
+        .hero-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+
+        .hero-food-item {
+            width: 100%;
+            height: 200px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-food-item:nth-child(1) { animation-delay: 0s; }
+        .hero-food-item:nth-child(2) { animation-delay: 0.5s; }
+        .hero-food-item:nth-child(3) { animation-delay: 1s; }
+        .hero-food-item:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .batik-ornament {
+            position: absolute;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .ornament-left {
+            top: 10%;
+            left: -5%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .ornament-right {
+            bottom: 10%;
+            right: -5%;
+            width: 180px;
+            height: 180px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            text-align: center;
+            color: #8b2f2f;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #5d4037;
+            font-size: 1.1em;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid #f5e6d3;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(139, 47, 47, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .product-icon {
+            width: 150px;
+            height: 150px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #3d2817;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.4em;
+            color: #8b2f2f;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            width: 100%;
+            background: linear-gradient(135deg, #8b2f2f 0%, #a13d3d 100%);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(135deg, #a13d3d 0%, #8b2f2f 100%);
+            transform: scale(1.02);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(139, 47, 47, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: #8b2f2f;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: #5d4037;
+            font-size: 0.95em;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .about-illustration {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #8b2f2f;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: #5d4037;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 3em;
+            color: #8b2f2f;
+            opacity: 0.2;
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-text {
+            color: #5d4037;
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b2f2f 0%, #a13d3d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #3d2817;
+            margin-bottom: 3px;
+        }
+
+        .author-location {
+            font-size: 0.85em;
+            color: #8b2f2f;
+        }
+
+        .testimonial-stars {
+            color: #ffa500;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #3d2817 0%, #5d4037 100%);
+            color: #f5e6d3;
+            padding: 70px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #8b2f2f 0%, #a13d3d 50%, #8b2f2f 100%);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7em;
+            color: #f5e6d3;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            font-size: 2em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 25px;
+            padding: 18px;
+            background: rgba(245, 230, 211, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s;
+            border-left: 4px solid #8b2f2f;
+        }
+
+        .contact-item:hover {
+            background: rgba(245, 230, 211, 0.15);
+            transform: translateX(8px);
+        }
+
+        .contact-icon {
+            font-size: 1.7em;
+            min-width: 35px;
+            text-align: center;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #f5e6d3;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .contact-value {
+            color: #e8d5c4;
+            font-size: 1.1em;
+            word-break: break-word;
+        }
+
+        .contact-value a {
+            color: #e8d5c4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-value a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .hours-info {
+            background: rgba(139, 47, 47, 0.25);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #8b2f2f;
+        }
+
+        .hours-info h4 {
+            color: #f5e6d3;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hours-info p {
+            color: #e8d5c4;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .hours-info .day-info {
+            font-size: 1em;
+            margin-top: 8px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 35px;
+            border-top: 1px solid rgba(245, 230, 211, 0.2);
+            color: #e8d5c4;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+
+        .footer-tagline {
+            font-size: 0.95em;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-images {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 20px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2em;
+            }
+
+            .hero-text p {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+
+            .products, .features, .about, .testimonials {
+                padding: 60px 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="header-content">
+     <div class="logo">
+      <svg class="logo-icon" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="#8b2f2f" opacity="0.15" /> <path d="M 30 50 Q 50 25 70 50 Q 50 75 30 50" fill="#8b2f2f" /> <circle cx="50" cy="50" r="18" fill="#f5e6d3" /> <path d="M 45 45 L 50 40 L 55 45 L 55 55 L 50 60 L 45 55 Z" fill="#8b2f2f" />
+      </svg> Oleh-Oleh Kediri
+     </div>
+     <nav>
+      <ul>
+       <li><a href="#home">Beranda</a></li>
+       <li><a href="#products">Produk</a></li>
+       <li><a href="#about">Tentang Kami</a></li>
+       <li><a href="#testimonials">Testimoni</a></li>
+       <li><a href="#contact">Kontak</a></li>
+      </ul>
+     </nav>
+    </div>
+   </div>
+  </header>
+  <section class="hero" id="home">
+   <svg class="batik-ornament ornament-left" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M 100 20 Q 140 60 100 100 Q 60 60 100 20" fill="none" stroke="#8b2f2f" stroke-width="2" /> <circle cx="100" cy="60" r="8" fill="#8b2f2f" /> <path d="M 80 80 Q 100 70 120 80" fill="none" stroke="#5d4037" stroke-width="2" />
+   </svg>
+   <svg class="batik-ornament ornament-right" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="80" fill="none" stroke="#8b2f2f" stroke-width="2" /> <path d="M 60 100 L 100 60 L 140 100 L 100 140 Z" fill="none" stroke="#5d4037" stroke-width="2" /> <circle cx="100" cy="100" r="15" fill="#8b2f2f" />
+   </svg>
+   <div class="container">
+    <div class="hero-content">
+     <div class="hero-text">
+      <h1 id="hero-title">Oleh-Oleh Khas Kota Kediri</h1>
+      <p id="hero-subtitle">Rasa Otentik, Kualitas Terbaik, Fresh Setiap Hari.</p><a href="#products" class="cta-button" id="cta-button">Belanja Sekarang</a>
+     </div>
+     <div class="hero-images">
+      <svg class="hero-food-item" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="50" width="120" height="100" rx="15" fill="#d2691e" /> <rect x="45" y="55" width="110" height="90" rx="12" fill="#f4a460" /> <rect x="55" y="70" width="90" height="8" fill="#8b4513" opacity="0.4" /> <rect x="55" y="90" width="90" height="8" fill="#8b4513" opacity="0.4" /> <rect x="55" y="110" width="90" height="8" fill="#8b4513" opacity="0.4" /> <circle cx="75"
